@@ -57,7 +57,8 @@
 
 
   <title>
-  小白的博客
+  
+    排序算法 · 小白的博客
   
 </title>
 </head>
@@ -228,152 +229,37 @@
       <main class="main" id="main">
         <div class="main-wrapper">
           
-  
+    
+    <div class="archive syuanpi fadeInUp" id="archive">
+        
+            <h2 class="archive-title"> 正在查看 </h2>
+            <span class="archive-name"> — 排序算法</span>
+        
+        <div class="archive-list">
+            <ul>
+        
+            
+            
+            <li class="archive-post">
+                <span class="archive-post-time">
+                
+                    2019-03-28
+                
+                </span>
+                <span class="archive-post-link">
+                    <a href="/2019/03/28/常见排序算法Java实现/">常见排序算法Java实现</a>
+                </span>
+            </li>
 
-<section class="posts">
-  
-    
-  
-  <article class="
-  post
-  
-  ">
-    <header class="post-header">
-      <div class="post-time syuanpi fadeInUpShort back-1">
-        <div class="post-time-wrapper">
-          <span>2019-03-28</span>
-          
-          
+        
+            </ul>
         </div>
-      </div>
-      <h1 class="post-title syuanpi fadeInUpShort back-2">
-        
-          <a href="/2019/03/28/Java实现红黑树/">Java实现红黑树</a>
-        
-      </h1>
-    </header>
-    <div class="post-content syuanpi fadeInUpShort back-3">
-      
-        
-          <h2 id="红黑树简单介绍"><a href="#红黑树简单介绍" class="headerlink" title="红黑树简单介绍"></a>红黑树简单介绍</h2><p>红黑树是一种特殊的二叉查找树，它具有以下几点特性：</p>
-<ol>
-<li>每个节点只有一种颜色，黑色或红色。</li>
-<li>根节点是黑色。</li>
-<li>叶子节点是黑色。（这里的叶子节点是指空节点）</li>
-<li>如果一个节点是红色的，那么它的子节点都是黑色的。</li>
-<li>从一个节点到该节点的子孙叶子节点的所有路径上包含相同数目的黑色节点</li>
-</ol>
-        
-      
-    
-      <p class="content-link">
-        <a href="/2019/03/28/Java实现红黑树/#more">
-          <span>继续阅读</span>
-        </a>
-      </p>
-    
     </div>
     
-  </article>
-  
-  
-    
-  
-
-  
-    
-  
-  <article class="
-  post
-  
-  ">
-    <header class="post-header">
-      <div class="post-time syuanpi fadeInUpShort back-1">
-        <div class="post-time-wrapper">
-          <span>2019-03-28</span>
-          
-          
-        </div>
-      </div>
-      <h1 class="post-title syuanpi fadeInUpShort back-2">
-        
-          <a href="/2019/03/28/常见排序算法Java实现/">常见排序算法Java实现</a>
-        
-      </h1>
-    </header>
-    <div class="post-content syuanpi fadeInUpShort back-3">
-      
-        
-          <h4 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1.冒泡排序"></a>1.冒泡排序</h4><p>冒泡排序的思想是遍历若干次数组，每次遍历从左往右比较相邻两个数大小，如果左边的元素大于右边的，则交换位置，这样一次遍历后最大的一个元素就会在数组尾部。冒泡排序时间复杂度是<script type="math/tex">O(n^2)</script>,是稳定的算法。<br>算法稳定性 — 假设在数列中存在a[i]=a[j]，若在排序之前，a[i]在a[j]前面；并且排序之后，a[i]仍然在a[j]前面。则这个排序算法是稳定的。<br>
-        
-      
-    
-      </p><p class="content-link">
-        <a href="/2019/03/28/常见排序算法Java实现/#more">
-          <span>继续阅读</span>
-        </a>
-      </p>
-    
-    </div>
-    
-  </article>
-  
-  
-    
-  
-
-  
-    
-  
-  <article class="
-  post
-  
-  ">
-    <header class="post-header">
-      <div class="post-time syuanpi fadeInUpShort back-1">
-        <div class="post-time-wrapper">
-          <span>2019-03-28</span>
-          
-          
-        </div>
-      </div>
-      <h1 class="post-title syuanpi fadeInUpShort back-2">
-        
-          <a href="/2019/03/28/浅谈SpringAOP/">浅谈SpringAOP</a>
-        
-      </h1>
-    </header>
-    <div class="post-content syuanpi fadeInUpShort back-3">
-      
-        
-          <p>AOP是Aspect Oriented Programming的缩写，即面向切面编程。在一个系统中，有的功能是散布在应用的多处，跨了应用的多个点，这些功能被称为横切关注点，比如系统的日志记录。这些横切关注点在概念上独立于应用的业务逻辑，但通常它们会嵌入到应用的业务逻辑中，这样会造成两个问题：</p>
-<ol>
-<li>实现横切关注点功能的代码会重复出现在很多地方，如果需要改它的逻辑必须修改它嵌入的各个模块。即使把横切关注点作为一个独立的模块，但是对它的方法调用还是会重复的出现在每一个要嵌入的模块中；</li>
-<li>嵌入横切关注点的模块除了要关注自己本身的业务逻辑外，还要关注横切关注点要的功能，导致代码混乱。  </li>
-</ol>
-        
-      
-    
-      <p class="content-link">
-        <a href="/2019/03/28/浅谈SpringAOP/#more">
-          <span>继续阅读</span>
-        </a>
-      </p>
-    
-    </div>
-    
-  </article>
-  
-  
-    
-  
-
-  
-</section>
-  
   <nav class="pagination">
       <span class="page-number current">1</span>
   </nav>
+
 
 
         </div>
