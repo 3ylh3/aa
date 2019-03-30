@@ -10,7 +10,6 @@
 
 {% block main %}
   {% include "_partial/main.swig" %}
-  <p>{{ page.total }}</p>
   {% include "_partial/pagenum.swig" %}
 {% endblock %}
 
