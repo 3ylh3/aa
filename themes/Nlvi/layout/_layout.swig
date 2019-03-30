@@ -7,6 +7,7 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://ico.z01.com/zico.min.css" rel="stylesheet"/>
   <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -39,6 +40,17 @@
                     <p class="card_text" style="margin:0"><b>{{ site.tags.length }}</b></p>
                     <p class="card_text" style="margin:0">标签</p>
                  </div>
+               </div>
+               <div class="row" style="margin-top:10%;">
+                  <div class="col">
+                     <i class="zi zi_tmQq"></i>
+                  </div>
+                  <div class="col">
+                     <i class="zi zi_tmWeixin"></i>
+                  </div>
+                  <div class="col">
+                     <i class="zi zi_rss"></i>
+                  </div>
                </div>
             </div>
          </div>
