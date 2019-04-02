@@ -62,5 +62,28 @@ nlvi.prototype.balance = function() {
       $('.inner-cloud').css('transform', 'translateX(-96%)');
     });
   }
+  utils.categorycloud = function() {
+    function tagHide() {
+      $('#categorycloud').addClass('melt').one('webkitAnimationEnd AnimationEnd', function() {
+        $(this).hide();
+        tool('opreateClass')('#categorycloud', 'show syuanpi clarity melt', 'remove');
+        tool('opreateClass')('.menu-item', 'has_tag', 'remove');
+        tool('opreateClass')('.main-nav', 'has_tag', 'remove');
+      });
+    }
+    $('#categories').on('click', function() {
+      if (tool('existClass')('#categorycloud', 'show')) {
+        tagHide();
+      } else {
+        $('#categorycloud').show();
+        tool('opreateClass')('#categorycloud', 'show syuanpi clarity');
+        tool('opreateClass')('.menu-item', 'has_tag');
+        tool('opreateClass')('.main-nav', 'has_tag');
+      }
+    });
+    $('#mobile-categories').on('click', function () {
+      $('.inner-categorycloud').css('transform', 'translateX(-96%)');
+    });
+  }
   return utils
 }

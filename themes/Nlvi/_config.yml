@@ -4,11 +4,12 @@
 
 #navigation
 menu: 
-  article: /
+  #article: /
   archives: /archives
+  categories: /categories
   tags: /tags
   about: /about
-  # RSS: /atom.xml
+  #RSS: /atom.xml
 
 # favicon
 favicon: 
@@ -93,7 +94,7 @@ sub:
 # ===========================================
 
 analytics:
-  google: true
+  google:
   baidu:
 
 #visit_count(Powered by busuanzi on http://busuanzi.ibruce.info/)

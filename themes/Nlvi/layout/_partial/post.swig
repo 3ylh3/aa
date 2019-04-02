@@ -23,6 +23,8 @@
                 <a href="{{ url_for(tag.path) }}">{{ tag.name }}</a>
               {% endfor %}
               </aside>
+              &nbsp;
+              <span><i class="zi zi_eye"></i>：<span id="{{ url_for(post.path) }}" class="leancloud_visitors" data-flag-title="{{ post.title }}"></span></span>
             {% endif %}
           {% endif %}
         </div>
@@ -46,11 +48,18 @@
         {% endif %}
       {% endif %}
     {% if post.excerpt and is_home() %}
-      <p class="content-link">
-        <a href="{{ url_for(post.path) }}#more">
-          <span>{{ __('page.readmore') }}</span>
-        </a>
-      </p>
+      <div class="row">
+        <div class="col">
+          <p class="content-link">
+            <a href="{{ url_for(post.path) }}#more">
+              <span>{{ __('page.readmore') }}</span>
+            </a>
+          </p>
+        </div>
+        <div class="col">
+          <span style="color:#79bfba;"><i class="zi zi_eye"></i>：<span id="{{ url_for(post.path) }}" class="leancloud_nums">0</span></span>
+        </div>
+      </div>
     {% endif %}
     </div>
     {% if is_post() %}

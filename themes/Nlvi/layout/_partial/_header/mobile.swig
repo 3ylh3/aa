@@ -2,7 +2,26 @@
   <div class="mobile-header-body">
     <div class="mobile-header-list">
       {% for name,url in theme.menu %}
-        {% if name == 'tags' %}
+        {% if name == 'categories' %}
+          <div class="mobile-nav-item inner-categorycloud">
+            <div class="mobile-nav-category">
+              <a href="javascript:;" id="mobile-categories">
+                <span>{{ __('nav.' + name) }}</span>
+                {% if config.language == '' || config.language == 'en' %}
+                {% else %}
+                    <span class="menu-item-label">{{ name }}</span>
+                {% endif %}
+              </a>
+            </div>
+            <div class="mobile-nav-categorycloud">
+              <div class="mobile-categorycloud-inner">
+                {{ tagcloud(site.categories, {
+                    min_font: 14,max_font: 14,amount: 40
+                }) }}
+              </div>
+            </div>
+          </div>
+        {% elseif name == 'tags' %}
           <div class="mobile-nav-item inner-cloud">
             <div class="mobile-nav-tag">
               <a href="javascript:;" id="mobile-tags">

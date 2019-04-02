@@ -2,6 +2,7 @@
   <div class="article-meta">
     <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
     <%- partial('post/category') %>
+    阅读数量:<span id="<%= url_for(post.path) %>" class="leancloud_visitors" data-flag-title="<%- post.title %>"></span>次
   </div>
   <div class="article-inner">
     <%- partial('post/gallery') %>
@@ -28,6 +29,7 @@
         <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><%= __('comment') %></a>
       <% } %>
       <%- partial('post/tag') %>
+      {% include "leanCloud.swig" %}
     </footer>
   </div>
   <% if (!index){ %>

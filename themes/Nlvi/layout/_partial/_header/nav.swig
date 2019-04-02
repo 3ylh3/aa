@@ -12,7 +12,7 @@
     </li>
   {% endif %}
   {% for name, url in theme.menu %}
-    {% if name == 'search' or name == 'tags' %}
+    {% if name == 'search' or name == 'tags' or name== 'categories' %}
       {% set link = 'javascript:;' %}
     {% else %}
       {% set link = url_for(url) %}

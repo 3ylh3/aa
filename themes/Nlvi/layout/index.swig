@@ -7,7 +7,6 @@
   {% endif %}
 {% endblock %}
 
-
 {% block main %}
   {% include "_partial/main.swig" %}
   {% include "_partial/pagenum.swig" %}

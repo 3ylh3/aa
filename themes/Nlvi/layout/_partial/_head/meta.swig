@@ -8,7 +8,6 @@
 <meta name="msapplication-navbutton-color" content="#666666">
 <meta name= "format-detection" content="telephone=no" />
 <meta name="keywords" content="nlvi, Nlvi" />
-<meta name="referrer" content="no-referrer">
 {% if theme.favicon %}
   <link rel="apple-touch-icon"  sizes="72x72"  href="{{theme.favicon}}">
   <link rel="apple-touch-icon-precomposed"  sizes="72x72"  href="{{theme.favicon}}">

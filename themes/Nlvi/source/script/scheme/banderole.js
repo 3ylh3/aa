@@ -58,5 +58,20 @@ nlvi.prototype.banderole = function() {
       $('.inner-cloud').css('transform', 'translateX(-96%)');
     });
   }
+  utils.categorycloud = function() {
+    $('#categories').on('click', function() {
+      tool('opreateClass')('#categorycloud', 'show', 'add');
+      tool('opreateClass')('.categorycloud-mask', 'show', 'add');
+      tool('opreateClass')('.header', 'show', 'add');
+    });
+    $('.categorycloud-mask').on('click', function() {
+      tool('opreateClass')('#categorycloud', 'show', 'remove');
+      tool('opreateClass')('.categorycloud-mask', 'show', 'remove');
+      tool('opreateClass')('.header', 'show', 'remove');
+    });
+    $('#mobile-categories').on('click', function () {
+      $('.inner-categorycloud').css('transform', 'translateX(-96%)');
+    });
+  }
   return utils
 }
