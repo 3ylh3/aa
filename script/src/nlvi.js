@@ -338,6 +338,7 @@
     utils.showToc();
     utils.back2top();
     utils.tagcloud();
+    utils.categorycloud();
     utils.switchToc();
     theme.reward && utils.showReward();
     theme.search && utils.search();
