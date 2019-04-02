@@ -24,7 +24,7 @@
               {% endfor %}
               </aside>
               &nbsp;
-              <span><i class="zi zi_eye"></i>：0<span id="{{ url_for(post.path) }}" class="leancloud_visitors" data-flag-title="{{ post.title }}"></span></span>
+              <span><i class="zi zi_eye"></i>：<span id="{{ url_for(post.path) }}" class="leancloud_visitors" data-flag-title="{{ post.title }}">0</span></span>
             {% endif %}
           {% endif %}
         </div>
