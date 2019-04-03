@@ -16,9 +16,8 @@ tags:
  - **阿里云对象存储**：阿里云提供的海量、安全、低成本、高可靠的云存储服务。支持在任何应用、任何时间、任何地点存储和访问任意类型的数据。
  - **分布式任务调度**：提供秒级、精准、高可靠、高可用的定时（基于 Cron 表达式）任务调度服务。同时提供分布式的任务执行模型，如网格任务。网格任务支持海量子任务均匀分配到所有 Worker（schedulerx-client）上执行。
  - **阿里云短信服务**：覆盖全球的短信服务，友好、高效、智能的互联化通讯能力，帮助企业迅速搭建客户触达通道。  
-
- <!-- more -->
 本文分两部分来介绍通过Nacos实现配置管理和动态服务发现。
+<!-- more -->
 ## 一、配置管理
 ### 1.安装Naocs(Linux环境)
 首先下载Nacos压缩包：https://github.com/alibaba/nacos/releases ,下载后使用tar命令解压，进入bin目录，运行下面命令启动：
@@ -26,17 +25,18 @@ tags:
     sh startup.sh -m standalone
 ```
 然后访问http:/x.x.x.x:8848/nacos/index.html(x.x.x.x为安装服务器)，输入用户名密码（默认都是nacos），登录后看到：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/1020c52af50df66c3b7fb6b1d6839792?fid=4047388677-250528-400099579215416&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-ugk9HwA4%2brswfwENrnLhDvbTExE%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125242335477702770&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![nacos](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190304174812185.png)
 至此Nacos安装成功。
 
 ### 2. 实现动态配置管理
 首先在Nacos新增配置，点击+号：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/379f183459b7c0cba30d1d764f447479?fid=4047388677-250528-676035063095728&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-1b%2f1yfU%2bAS1Y%2fyfsvNiBserXcFc%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125258399154272187&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![nacos](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190304175048811.png)
 填写Data Id、Group和内容，配置格式选择YAML。
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/61a9549966c3ebd354d220a3057b81eb?fid=4047388677-250528-923983285890615&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-qJUIVVs8yjw9mLYRFO%2bIpwJzXM0%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125274381894615180&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![nacos](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190304175143790.png)
 其中Data Id的完整格式为：
-
+```
     ${prefix}-${spring.profile.active}.${file-extension}
+```
 prefix 默认为 spring.application.name 的值，也可以通过配置项 spring.cloud.nacos.config.prefix来配置。
 spring.profile.active 即为当前环境对应的 profile，注意：当 spring.profile.active 为空时，对应的连接符 - 也将不存在，dataId 的拼接格式变成 `${prefix}.${file-extension}`
 file-exetension 为配置内容的数据格式，可以通过配置项 spring.cloud.nacos.config.file-extension 来配置。目前只支持 properties 和 yaml 类型。
@@ -66,7 +66,7 @@ file-exetension 为配置内容的数据格式，可以通过配置项 spring.cl
     </project>
 ```
 新建config-client模块，选择Spring Initializr创建Spring Boot工程，依赖选择：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/9e4a311fcd1c273ad8fd9b914bf2d7dc?fid=4047388677-250528-146616114077504&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-o2LsBO0HR53vsdsfYoWBqnU5FXU%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125313323241557432&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![新建config-client模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190304180745749.png)
 创建完成后修改pom文件parent节点并添加依赖：
 ```xml
     <dependency>
@@ -141,7 +141,7 @@ file-exetension 为配置内容的数据格式，可以通过配置项 spring.cl
     </project>
 ```
 修改配置文件名称为bootstrap.yml(或bootstrap.properties，需要注意要获取Nacos配置的属性必须使用bootstrap)，修改内容为：
-```yml
+```yaml
     server:
       port: 8880
     spring:
@@ -192,7 +192,7 @@ file-exetension 为配置内容的数据格式，可以通过配置项 spring.cl
     }
 ```
 使用@Value注解来获取配置文件中的message，启动工程，访问http://localhost:8880/config可以看到成功获取到message:
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/531dbeb982fb16f573939821be229d0c?fid=4047388677-250528-79504148806945&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-ks0qjowtnjsgyFn5yDmbnyMPmPk%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125360256166241206&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![运行结果](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190305093501265.png)
 ## 二、服务发现(使用FeignClient调用)
 ### 创建服务提供者
 新建service-discovery模块（空的maven项目），创建完成后删除src目录修改pom文件内容如下：
@@ -219,7 +219,7 @@ file-exetension 为配置内容的数据格式，可以通过配置项 spring.cl
     </project>
 ```
 在service-discovery模块再创建service-provider子模块，选择Spring Initializr创建Spring Boot工程，依赖选择：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/95b92591dcfc8882241f40fe1671495c?fid=4047388677-250528-19847639165588&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-rmu8w1Q4IhAxI70ZYg7vRYaFXUw%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125373872556650659&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![创建service-provider子模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/2019030509431343.png)
 创建完成后修改pom文件parent节点并添加Spring Cloud依赖：
 ```xml
     <properties>
@@ -311,7 +311,7 @@ file-exetension 为配置内容的数据格式，可以通过配置项 spring.cl
     </project>
 ```
 修改application.yml(application.properties)配置文件:
-```yml
+```yaml
     server:
       port: 8888
     spring:
@@ -384,11 +384,11 @@ server-addr是nacos注册中心的地址。
     }
 ```
 启动项目，查看nacos服务管理中已经注册成功：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/7cbbdd3e05643832e9fb02bdddaa2550?fid=4047388677-250528-246518918884560&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-PV9exyHWM3IHN%2bS6KmGlUp7XgUI%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125422624581379194&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![运行结果](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190305102753436.png)
 ### 创建服务消费者
 在service-discovery模块再创建service-consumer子模块，选择Spring Initializr创建Spring Boot工程，依赖选择：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/1726a3c19cc26846b0729efcab8d5953?fid=4047388677-250528-754450686120197&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-G1Kj5CLYULZoVRj6S13iiCRpJxk%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125442137411054480&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/6812bebf4d6c2978073ee24a5f4e09ec?fid=4047388677-250528-340411149222991&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-hpg704qotuXwsepiEPJnTJkYVpE%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125456713167089425&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![创建service-consumer子模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190305103016412.png)
+![创建service-consumer子模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190305103031980.png)
 创建完成后修改pom文件parent节点并添加nacos-discovery依赖：
 ```xml
     <dependency>
@@ -474,7 +474,7 @@ server-addr是nacos注册中心的地址。
     </project>
 ```
 修改application.yml(application.properties)配置文件:
-```yml
+```yaml
     server:
       port: 80
     spring:
@@ -540,6 +540,6 @@ server-addr是nacos注册中心的地址。
     }
 ```
 启动项目，查看nacos服务管理，看到消费者已经注册成功：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/64679631365b60028f58fe5be272c5ae?fid=4047388677-250528-916691882357865&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-nhRprbQaH7iSmD%2bztfFdYW586S4%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125513100433078546&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
-访问http://localhost/test?name=xiaobai 看到成功调用到service-provider的服务：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/72e4fe6ad319cd8c133706b8e8505445?fid=4047388677-250528-64918499847051&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-H4ZwC5jiQJ15D6SctfiEmjNBH84%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125538735173456950&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![运行结果](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190305104116656.png)
+访问http://localhost/test?name=xiaobai看到成功调用到service-provider的服务：
+![运行结果](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190305104214440.png)

@@ -38,11 +38,11 @@ tags:
 ```
 ## 2.创建eureka-server注册中心模块
 新建模块：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/92d11aba740847222a735350b9df112d?fid=4047388677-250528-1101071544454066&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-356k2QWyvkrxrB%2foO8xtojUq8%2f8%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125752973211271004&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![创建eureka-server注册中心模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228154453293.png)
 选择Spring Initializr创建spring boot工程：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/508eeaa8f87b54c65f941fa49a008c35?fid=4047388677-250528-439396504365999&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-1jxS66WOryb3YLgUzZoRJr4RSZA%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125769576267934607&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![创建eureka-server注册中心模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228151856361.png)
 选择Eureka Server:
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/a2654e03a59c341611a124e891d70a85?fid=4047388677-250528-993612707636519&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-ENFLcDRHldLrdRjuhFqyFEpmecg%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125784398452581592&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![创建eureka-server注册中心模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228152003238.png)
 创建完成后修改pom文件parent节点为父项目的groupId、artifactId以及version，完整的pom文件如下：
 ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -109,8 +109,9 @@ tags:
 
     </project>
 ```
+
 修改application.yml配置文件：
-```yml
+```yaml
     spring:
       application:
         name: eureka-server
@@ -125,6 +126,7 @@ tags:
         serviceUrl:
           defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 ```
+
 其中registerWithEureka: false和fetchRegistry: false是关闭本服务的客户端行为，即不把本服务注册到注册中心。
 给启动类添加@EnableEurekaServer注解：
 ```java
@@ -145,16 +147,16 @@ tags:
     }
 ```
 运行启动类，访问http://localhost:8761/会看到
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/bf3fe64d6500948897b1e8c12801e8c7?fid=4047388677-250528-722924595807630&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-Me5U27k2ZXUkuGR%2bZs5xHFjNodU%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125804163934456581&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![运行结果](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228154051813.png)
 No instances available代表没有服务注册。
 ## 3.创建provider服务提供者模块
 新建模块：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/92d11aba740847222a735350b9df112d?fid=4047388677-250528-1101071544454066&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-356k2QWyvkrxrB%2foO8xtojUq8%2f8%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125804163934456581&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![创建provider服务提供者模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228154453293.png)
 选择Spring Initializr创建spring boot工程：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/508eeaa8f87b54c65f941fa49a008c35?fid=4047388677-250528-439396504365999&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-1jxS66WOryb3YLgUzZoRJr4RSZA%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125804163934456581&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![创建provider服务提供者模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228151856361.png)
 选择web和Eureka Discovery创建eureka-client web工程：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/94b36b69cfa87819f1a13b58075a17d3?fid=4047388677-250528-1037978541356091&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-3yf0dTw%2bIOnNBfUWWIf%2bQVYTwag%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125840562361037149&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/6384e65fa90b0ab1b1fc5e8d383e1ea5?fid=4047388677-250528-828431340802585&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-2epFu5KcnwJkpk3lNi4hSpig18Q%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125852767313399311&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![创建provider服务提供者模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228154617262.png)
+![创建provider服务提供者模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/2019022815463168.png)
 修改pom文件parent节点为父项目的groupId、artifactId以及version，完整的pom文件如下：
 ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -226,7 +228,7 @@ No instances available代表没有服务注册。
     </project>
 ```
 修改application.yml配置文件：
-```yml
+```yaml
     spring:
       application:
         name: provider
@@ -299,16 +301,16 @@ No instances available代表没有服务注册。
     }
 ```
 启动provider项目，刷新http://localhost:8761/页面查看provider服务注册成功：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/025ac5e7c15b52ca8d19f2b392e36534?fid=4047388677-250528-809129744794204&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-tyvYpeuwcSMdB%2fdteFN10Qbyric%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125879905141895915&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![运行结果](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228165629403.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTE0NzMwNjc=,size_16,color_FFFFFF,t_70)
 ## 3.创建consumer模块
 新建模块：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/92d11aba740847222a735350b9df112d?fid=4047388677-250528-1101071544454066&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-356k2QWyvkrxrB%2foO8xtojUq8%2f8%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125879905141895915&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![创建consumer模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228154453293.png)
 选择Spring Initializr创建spring boot工程：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/508eeaa8f87b54c65f941fa49a008c35?fid=4047388677-250528-439396504365999&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-1jxS66WOryb3YLgUzZoRJr4RSZA%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125879905141895915&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![创建consumer模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228151856361.png)
 选择web、Eureka Discovery和Feign:
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/7ab04a2bf875b73e72fba0c62ccb1edc?fid=4047388677-250528-245330218961512&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-ddrLGkC1kdKufuDufH57L6g3xnQ%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125916616067154776&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/56af8e0b66e7b2a68a9cf3ca79cbcea6?fid=4047388677-250528-852570280490889&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-UvaGW1%2bKXVgXVJroTNqd%2b4bhuPM%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125927533832985341&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/48feebcb1299c5e7eaf4591a552ead91?fid=4047388677-250528-196908805402021&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-57x%2f1pmGWCkBoY8Ecp86%2fZULUek%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125941929578069780&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![创建consumer模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228165916502.png)
+![创建consumer模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228170116134.png)
+![创建consumer模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228165939578.png)
 修改pom文件parent节点为父项目的groupId、artifactId以及version，完整的pom文件如下：
 ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -384,7 +386,7 @@ No instances available代表没有服务注册。
     </project>
 ```
 修改application.yml配置文件，配置文件内容和provider类似，只需修改一下端口防止冲突：
-```yml
+```yaml
     spring:
       application:
         name: consumer
@@ -450,8 +452,8 @@ No instances available代表没有服务注册。
     }
 ```
 启动consumer服务，刷新http://localhost:8761/，看到consumer服务也注册成功：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/3b8503d2ea95fa23d6a668dd95dd241f?fid=4047388677-250528-1099092014475157&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-kBPlarl%2bEJca7DYdGlSOqSrMRxY%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125971651777837688&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![运行结果](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228172110143.png)
 此时访问http://localhost/sayHello就会看到调用成功：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/c2505da31b19c07262cda096a31d1b05?fid=4047388677-250528-626931092251024&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-n63ARMmKED68pNXLtoe7lMSPimQ%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2125982752155201888&dp-callid=0&time=1554188400&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![运行结果](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228172218909.png)
 
 完整的项目代码已上传github:https://github.com/3ylh3/spring-cloud

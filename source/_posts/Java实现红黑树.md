@@ -13,7 +13,6 @@ tags:
  3. 叶子节点是黑色。（这里的叶子节点是指空节点）
  4. 如果一个节点是红色的，那么它的子节点都是黑色的。
  5. 从一个节点到该节点的子孙叶子节点的所有路径上包含相同数目的黑色节点
-
 <!-- more -->
 红黑树定义：
 ```java
@@ -74,7 +73,7 @@ tags:
  8. 将node设为tmpNode的左孩子，将node的父节点设为tmpNode。
 
 图解如下：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/f5452830bc09c1a4b2e532e47262bc69?fid=4047388677-250528-938694789941481&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-qThr3un0cgWbsyf503J0BlqCFzI%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124360158887013584&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![左旋](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190313165501748.png)
 Java代码实现：
 ```java
     public void leftRotate(TreeNode node){
@@ -127,45 +126,45 @@ Java代码实现：
  8. 将node设为tmpNode的右孩子，将node的父节点设为tmpNode。
 
 图解如下：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/a7173a28f9276d765cb126db82c42dd2?fid=4047388677-250528-383834506415467&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-vfzZbVuVunSyRNcw%2bH2aPTAQ%2f04%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124399203936120137&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)
+![右旋](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190313171837844.png)
 Java代码实现：
 ```java
     public void rightRotate(TreeNode node){
-        //新建tmpNode节点，把node的左孩子赋给tmpNode
-        TreeNode tmpNode = node.leftChild;
-        if(tmpNode == null){
-            return;
+            //新建tmpNode节点，把node的左孩子赋给tmpNode
+            TreeNode tmpNode = node.leftChild;
+            if(tmpNode == null){
+                return;
+            }
+            TreeNode rchild = tmpNode.rightChild;
+            if(rchild != null) {
+                //将tmpNode的右孩子设为node的左孩子
+                node.leftChild = tmpNode.rightChild;
+                //将tmpNode右孩子的父节点设为node
+                tmpNode.rightChild.parent = node;
+            }
+            else{
+                //将node的左孩子设为空
+                node.leftChild = null;
+            }
+            //将node的父亲设为tmpNode的父亲
+            tmpNode.parent = node.parent;
+            //判断如果node的父亲是空，则设tmpNode为root节点
+            if(node.parent == null){
+                this.root = tmpNode;
+            }
+            //如果node是它父亲的左孩子，那么将tmpNode设为node父亲的左孩子
+            else if(node == (node.parent.leftChild)){
+                node.parent.leftChild = tmpNode;
+            }
+            //否则将tmpNode设为node父亲的右孩子
+            else{
+                node.parent.rightChild = tmpNode;
+            }
+            //将node设为tmpNode的右孩子
+            tmpNode.rightChild = node;
+            //将node的父节点设为tmpNode
+            node.parent = tmpNode;
         }
-        TreeNode rchild = tmpNode.rightChild;
-        if(rchild != null) {
-            //将tmpNode的右孩子设为node的左孩子
-            node.leftChild = tmpNode.rightChild;
-            //将tmpNode右孩子的父节点设为node
-            tmpNode.rightChild.parent = node;
-        }
-        else{
-            //将node的左孩子设为空
-            node.leftChild = null;
-        }
-        //将node的父亲设为tmpNode的父亲
-        tmpNode.parent = node.parent;
-        //判断如果node的父亲是空，则设tmpNode为root节点
-        if(node.parent == null){
-            this.root = tmpNode;
-        }
-        //如果node是它父亲的左孩子，那么将tmpNode设为node父亲的左孩子
-        else if(node == (node.parent.leftChild)){
-            node.parent.leftChild = tmpNode;
-        }
-        //否则将tmpNode设为node父亲的右孩子
-        else{
-            node.parent.rightChild = tmpNode;
-        }
-        //将node设为tmpNode的右孩子
-        tmpNode.rightChild = node;
-        //将node的父节点设为tmpNode
-        node.parent = tmpNode;
-    }
 ```
 ### 插入新节点
 #### 一、找到插入节点的位置并插入
@@ -199,23 +198,23 @@ Java代码实现：
  7. 如果node节点的父节点是红色并且是祖父节点的右孩子，叔叔节点是黑色，并且node节点是父节点的右孩子，则将父节点设为黑色，将祖父节点设为红色并进行左旋。
 
  子情况1（父节点是红色，叔叔节点也是红色）图解， 5是插入节点（当前节点），：
- ![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/0287a49596aa6461baa17d895c06088a?fid=4047388677-250528-918932721350644&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-yKyGrQZevOA0nrTur9ZAfDSvHkc%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124419074797711851&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
-调整后（按步骤2和5调整）如下，20为当前节点：
- ![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/31f057a730f4d2f4b4e7debf4aba46b8?fid=4047388677-250528-984147541178577&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-LPYnFOQlITE6c%2bYIIxeOMpIJF%2f8%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124445533730676187&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
+ ![插入调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314101704714.png)  
+调整后（按步骤2和5调整）如下，20为当前节点：  
+ ![插入调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314101828404.png)  
  对当前节点递归调整（按照步骤1调整）后满足红黑树条件：  
- ![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/3ce8f58a10951cd1bc13ac2f2e7e725d?fid=4047388677-250528-270591184775104&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-oHNhKhxl%2f5aeXe82idoi0qoSYHw%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124457458616844281&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
+ ![插入调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314103800288.png)  
  子情况2（父节点是红色并且是祖父节点的左孩子，叔叔节点是黑色（空的叶子节点），并且插入节点是父节点的右孩子）图解，15为插入节点：
- ![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/0ab00abea56ede680541e3643d97fc32?fid=4047388677-250528-511955362634635&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-Mzre2jnf6codSVa7UoX6nOGljdE%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124471504485207545&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
- 调整（按步骤3调整）后如下，此时10是当前节点：
- ![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/5370716f21c5b9d8e7238e8d9d7878ed?fid=4047388677-250528-169763457222419&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-%2f954caWDMlSeujlhnWSWGux%2bf3o%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124485538067649927&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
+ ![插入调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314103126334.png)  
+ 调整（按步骤3调整）后如下，此时10是当前节点：  
+ ![插入调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314103357742.png)  
  对当前节点进行递归调整后满足红黑树条件（这种其实是子情况3，按照步骤4调整）：  
- ![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/2bdc7b62110113a8609fc564f4d9af22?fid=4047388677-250528-193747713382315&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-IQFxVnFm1w6mAMCbb8asYgvmCBE%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124500834132826051&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
+ ![插入调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314103651449.png)  
  子情况4图解（子情况3上面已经描述，不再赘述），插入节点是25：  
- ![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/36254b1d04ce61984262d0b15780fab7?fid=4047388677-250528-724974782356462&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-nCFmLcq979RbssYXg%2fb6ihm5Yf4%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124533073182299598&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
+ ![插入调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314103917223.png)  
  调整后（按照步骤6调整）如下，此时当前节点是30：  
- ![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/1457aed223a916f5687c4c0e74b8beee?fid=4047388677-250528-33958661693297&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-rR%2bXfL%2f16l602G4e%2bh07xHVhou8%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124544157888084509&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
+ ![插入调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314104100479.png)  
  递归调整（这种其实是子情况6，按照步骤7调整）后如下，满足红黑树条件：  
- ![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/32c3b9bb384a33330722fe65dec6dee8?fid=4047388677-250528-491970065941903&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-RxVIPQnXPcPQsn%2fUjn%2bWRjJoNB8%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124559203707742978&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
+ ![插入调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314104225580.png)  
 完整的Java代码如下：
 ```java
     /**
@@ -382,34 +381,34 @@ Java代码实现：
  9. 如果node是右孩子，tmpNode是黑色的，而且tmpNode的右孩子是红色的，左孩子是黑色的，则将tmpNode的右孩子变为黑色，将tmpNode变为红色，将tmpNode左旋，重新将tmpNode设为node的兄弟节点，继续下面步骤。
  10.  如果node是右孩子，tmpNode是黑色的，而且tmpNode的左孩子是红色，则将node父节点的颜色赋给tmpNode，将node父节点设为黑色，将tmpNode左孩子设为黑色，将node的父亲右旋。
 
-子情况1图解，已经删除的节点是20的左孩子（被空的叶子节点取代），需要调整的（当前节点）是20的左孩子（空的叶子节点）：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/9f9e0a15c000e570aa1e9597f651eadd?fid=4047388677-250528-937124763683071&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-as4xAGu2OdZkjsQsQXYdCVcWLjk%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124577504628707571&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
+子情况1图解，已经删除的节点是20的左孩子（被空的叶子节点取代），需要调整的（当前节点）是20的左孩子（空的叶子节点）：  
+![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314144744647.png)  
 调整（按照步骤3调整）后如下，此时当前节点的兄弟节点是25：  
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/7e406246bacdabb8f23ddf2e27be9ead?fid=4047388677-250528-50337304223953&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-8l4Ogs%2brSJGPBI2EGXZV9k7fTHc%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124599303420066230&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
-继续进行步骤3之后的步骤，此时其实是子情况2，继续调整（按照步骤4调整）后如下：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/bd0c42924055598bd823341b3177f555?fid=4047388677-250528-814979907090848&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-TdBxBKesQwGCiL%2bh6O80AUw7Bkk%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124614113546934179&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
+![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314145025255.png)  
+继续进行步骤3之后的步骤，此时其实是子情况2，继续调整（按照步骤4调整）后如下：  
+![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314150245957.png)  
 对父节点20进行递归调整后如下，满足红黑树规则：  
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/599480a48907f65dbcd57124ad60a29f?fid=4047388677-250528-121458865115983&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-qcSsAmXeOTebhJkP%2fQMifea8Bhs%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124629638490309983&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
-子情况3（子情况2前面已经描述过，这里不再赘述）图解如下，已经删除的节点是20的左孩子，需要调整的节点是20的左孩子（空叶子节点）:
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/b60b8bcaf07dff463e9439476df252e3?fid=4047388677-250528-130092490166979&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-AM4K7JV0wtYcoKAXlAga2S%2fv6W4%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124647991948754836&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
+![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314150521332.png)  
+子情况3（子情况2前面已经描述过，这里不再赘述）图解如下，已经删除的节点是20的左孩子，需要调整的节点是20的左孩子（空叶子节点）:  
+![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314152422158.png)  
 调整（按照步骤5）后如下，此时当前节点的兄弟节点是25：  
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/baebffadb8974c7d97a016cca66eef74?fid=4047388677-250528-281506235498622&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-tW5ksR0tCRIoNU0FqHfxPinORbs%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124667907544990004&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
-继续进行步骤5之后的步骤，这时实际上是子情况4，调整（按照步骤6）后如下，满足红黑树规则：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/84bd52ccb1535e145db64fd1b0b4565e?fid=4047388677-250528-1119339374595557&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-8XYxL2DrkDaP2qwVT3mBdD%2bTqa4%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124686291592018485&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
-子情况5（子情况4前面已经描述过，这里不再赘述）图解，已经删除的节点是20的右孩子，需要调整的节点是20的右孩子（空叶子节点）：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/6d14986f615ec55dafb84a3aec799015?fid=4047388677-250528-116254465281551&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-WyDDtWh4xy4zqdIyhxLXMPmjwrw%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124736170424651834&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
+![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314153928195.jpg)  
+继续进行步骤5之后的步骤，这时实际上是子情况4，调整（按照步骤6）后如下，满足红黑树规则：  
+![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314154737754.png)  
+子情况5（子情况4前面已经描述过，这里不再赘述）图解，已经删除的节点是20的右孩子，需要调整的节点是20的右孩子（空叶子节点）：  
+![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314155234787.png)  
 调整（按照步骤7）后如下，此时当前节点的兄弟节点是15：  
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/a9dd21e1fcd9cf1fb3b2b742e5c94cb2?fid=4047388677-250528-144744503307917&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-9K4ngMsD59fIYNKbxnzrAFPEG6I%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124758559261533514&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
-继续步骤7之后的步骤，此时其实是子情况6,继续调整（按照步骤8）后如下：  
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/d2aeb197085e7f58640a8a5dc67df4b2?fid=4047388677-250528-875218061079490&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-dtqZWpNjTR1mj%2fY1eDjWzR9SLIc%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124793699592637346&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
-递归调整父节点20后如下，满足红黑树规则：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/d90fa4f92b7dcae93bea3ffa1f51c2c3?fid=4047388677-250528-1099803307032097&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-aGtXmvlhEqhsPj6S2NB6102ZRww%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124819005727500006&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
-子情况7（子情况6前面已经描述过，这里不再赘述）图解，已经删除的节点是20的右孩子，需要调整的节点是20的右孩子（空的叶子节点）：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/e0f754250893f83cd2be1550e4a59f17?fid=4047388677-250528-444694906200413&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-DBU0MgyE4o%2fMwilrZ3iRGtvqtm8%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124861328434937529&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
+![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314155348344.png)  
+继续步骤7之后的步骤，此时其实是子情况6,继续调整（按照步骤8）后如下：
+![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314155923441.png)  
+递归调整父节点20后如下，满足红黑树规则：  
+![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314155955492.png)  
+子情况7（子情况6前面已经描述过，这里不再赘述）图解，已经删除的节点是20的右孩子，需要调整的节点是20的右孩子（空的叶子节点）：  
+![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314160551543.png)  
 调整（按照步骤9）后如下，此时当前节点的兄弟为15：  
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/697d195c035cefe551237a97a7a3fae1?fid=4047388677-250528-44491375157933&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-n3%2fkqLeoHBmj%2fDcYaI8KkNkdnEM%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124891682268127162&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
-继续步骤9之后的步骤，此时其实是子情况8，继续调整（按照步骤10）后如下，满足红黑树规则：
-![在这里插入图片描述](https://thumbnail10.baidupcs.com/thumbnail/9b385d0ba4497b0422b09ddd7beeea32?fid=4047388677-250528-1102487241494608&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-k07wl5qotthGmIAMIm0d1jLN7iY%3d&expires=8h&chkbd=0&chkv=0&dp-logid=2124915630235106551&dp-callid=0&time=1554184800&size=c1280_u720&quality=90&vuk=4047388677&ft=image&autopolicy=1)  
+![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/2019031416070444.png)  
+继续步骤9之后的步骤，此时其实是子情况8，继续调整（按照步骤10）后如下，满足红黑树规则：  
+![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314160832196.png)  
 调整完后判断调整的节点是不是空的叶子节点，如果是则将它删除。
 完整的删除代码如下：
 ```java
