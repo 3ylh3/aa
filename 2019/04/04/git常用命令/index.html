@@ -284,7 +284,7 @@
     </header>
     <div class="post-content syuanpi fadeInUpShort back-3">
       
-        <p>在列举git常用命令之前，首先介绍一下git工作区和版本库的概念。<br>工作区(working directory):通俗讲就是电脑中的目录。<br>版本库(repository):工作区中有一个隐藏的.git目录，就是git的版本库，其中包含一个被称为stage(又叫index)的暂存区，还有git自动创建的一个master分支，以及一个指向master的指针HEAD。<br>接下来介绍git的常用命令：</p>
+        <p>在列举git常用命令之前，首先介绍一下git工作区和版本库的概念。<br>工作区(working directory):通俗讲就是电脑中的目录。<br>版本库(repository):工作区中有一个隐藏的.git目录，就是git的版本库，其中包含一个被称为stage(又叫index)的暂存区，还有git自动创建的一个master分支，以及一个指向master的指针HEAD。<br><a id="more"></a><br>接下来介绍git的常用命令：</p>
 <ul>
 <li>git init：将目录变为可管理的仓库</li>
 <li>git add <file>:把对file的修改添加进暂存区</file></li>
@@ -325,8 +325,9 @@
 <li>git tag -d <name>:删除标签</name></li>
 <li>git push origin <tagname>:推送本地标签到远程</tagname></li>
 <li>git push origin —tags:推送所有本地标签到远程</li>
-<li>git push origin :refs/tags/<tagname>:删除远程标签（需要首先删除本地）<br>各操作图解如下：<br><img src="https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/git/git.png" alt="git"></tagname></li>
+<li>git push origin :refs/tags/<tagname>:删除远程标签（需要首先删除本地）</tagname></li>
 </ul>
+<p>各操作图解如下：<br><img src="https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/git/git.png" alt="git"></p>
 
       
     
