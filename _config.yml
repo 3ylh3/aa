@@ -85,3 +85,11 @@ deploy:
 
 #about
 self: 菜的抠脚，文章有不足之处还请指正！</br></br></br></br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;--啥都学不会的小白
+Plugins:
+- hexo-generator-baidu-sitemap
+- hexo-generator-sitemap
+
+baidusitemap:
+    path: baidusitemap.xml
+sitemap:
+    path: sitemap.xml
