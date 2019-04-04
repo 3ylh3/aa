@@ -80,9 +80,8 @@ theme: Nlvi
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo:
-    github: https://github.com/3ylh3/3ylh3.github.io.git,master
-    tencent: git@git.dev.tencent.com:yin_xiaobai/yin_xiaobai.git,master
+  repo: https://github.com/3ylh3/3ylh3.github.io.git
+  branch: master
 
 #about
 self: 菜的抠脚，文章有不足之处还请指正！</br></br></br></br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;--啥都学不会的小白
