@@ -1,10 +1,11 @@
 ---
 title: 常见排序算法Java实现
 date: 2019-03-28 15:53:47
-categories: 数据结构和算法
+categories:
+ - 数据结构和算法
+ - Java
 tags:
   - 排序算法
-  - Java
 mathjax: true
 ---
 #### 1.冒泡排序
