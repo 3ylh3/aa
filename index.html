@@ -253,7 +253,7 @@
             <div class="card-body">
                <div class="row">
                  <div class="col" style="padding:0">
-                    <p class="card_text" style="margin:0"><b>8</b></p>
+                    <p class="card_text" style="margin:0"><b>9</b></p>
                     <p class="card_text" style="margin:0">文章</p>
                  </div>
                  <div class="col" style="padding:0">
@@ -300,6 +300,64 @@
           <span>2019-04-09</span>
           
             
+              <span class="post-category"><a href="/categories/框架/">框架</a></span>
+            
+          
+          
+        </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          <a href="/2019/04/09/Spring自动化装配机制/">Spring自动化装配机制</a>
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        
+          <p>Spring从两个方面实现了bean的自动化装配：</p>
+<ul>
+<li>组件扫描：通过组件扫描，Spring会自动发现应用上下文中所创建的bean。</li>
+<li>自动装配：Spring会自动满足bean之间的依赖。</li>
+</ul>
+<p>先来讲一下组件扫描:<br>
+        
+      
+    
+      <div class="row">
+        <div class="col">
+          <p class="content-link">
+            <a href="/2019/04/09/Spring自动化装配机制/#more">
+              <span>继续阅读</span>
+            </a>
+          </p>
+        </div>
+        <div class="col">
+          <span style="color:#8bb4dc;"><i class="zi zi_eye"></i>：<span id="/2019/04/09/Spring自动化装配机制/" class="leancloud_nums">0</span></span>
+        </div>
+      </div>
+    
+    </p></div>
+    
+  </article>
+  
+  
+    
+  
+
+  
+    
+  
+  <article class="
+  post
+  
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2019-04-09</span>
+          
+            
               <span class="post-category"><a href="/categories/Java/">Java</a></span>
             
           
@@ -315,13 +373,24 @@
     <div class="post-content syuanpi fadeInUpShort back-3">
       
         
-          <p>SHA-1是一种安全散列算法，也是一种哈希函数，它能够将任意长度的信息散列成160位（bit）的消息摘要，散列值通常表示为40个十六进制数，结果是不可逆的。SHA-1主要数字签名，来验证数据的完整性。Java提供了MessageDigest类，可以用来实现SHA-1算法。MessageDigest.digest()方法返回的是byte数组，而SHA-1的结果常表示为40为十六进制数，因此需要进行转化，转化原理如下：<br>首先将byte数组每一位转为int类型，然后调用Integer.toHexString转为十六进制字符串，拼接到一个StringBuffer中，全部处理完后，将StringBuffer转为String即可。需要注意的是byte转为int需要进行与操作：&amp; 0xFF，目的是为了保证二进制数据的一致性，举个例子：一个byte是8个二进制位，例如byte类型的-12表示为1111 0100（负数补码表示，12的原码是0000 1100，补码就是取反1111 0011然后加1），如果直接转为int类型，那么就是前24位补1，就会变为1111 1111 1111 1111 1111 1111 1111 0100，会造成二进制补码不一致，所以需要与操作来实现：0x代表十六进制，F代表15,0xFF二进制表示为1111 1111，高24位补0与-12的补码表示进行与操作得到0000 0000 0000 0000 0000 0000 1111 0100，可以将高24位置为0，低8位保持不变，这样就保证了二进制补码的一致性。具体代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.security.MessageDigest;</span><br><span class="line"><span class="keyword">import</span> java.security.NoSuchAlgorithmException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SHA1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            String str = <span class="string">"Hello World!"</span>;</span><br><span class="line">            <span class="comment">//生成MessageDigest对象</span></span><br><span class="line">            MessageDigest md = MessageDigest.getInstance(<span class="string">"SHA-1"</span>);</span><br><span class="line">            <span class="comment">//更新摘要</span></span><br><span class="line">            md.update(str.getBytes());</span><br><span class="line">            <span class="comment">//生成摘要</span></span><br><span class="line">            <span class="keyword">byte</span>[] data = md.digest();</span><br><span class="line">            <span class="comment">//将结果转为十六进制字符串</span></span><br><span class="line">            StringBuffer hexstr = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">            String s = <span class="string">""</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; data.length; i++) &#123;</span><br><span class="line">                s = Integer.toHexString(data[i] &amp; <span class="number">0xFF</span>);</span><br><span class="line">                <span class="comment">//一个十六进制数4位，所以一个byte用两个十六进制数表示，不足的左补零</span></span><br><span class="line">                <span class="keyword">if</span> (s.length() &lt; <span class="number">2</span>) &#123;</span><br><span class="line">                    hexstr.append(<span class="number">0</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                hexstr.append(s);</span><br><span class="line">            &#125;</span><br><span class="line">            String result = hexstr.toString();</span><br><span class="line">            System.out.println(<span class="string">"result:"</span> + result);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (NoSuchAlgorithmException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>MessageDigest类也提供MD5的支持，只需要将getInstance的参数变为MD5即可。</p>
-
+          <p>SHA-1是一种安全散列算法，也是一种哈希函数，它能够将任意长度的信息散列成160位（bit）的消息摘要，散列值通常表示为40个十六进制数，结果是不可逆的。SHA-1主要数字签名，来验证数据的完整性。Java提供了MessageDigest类，可以用来实现SHA-1算法。MessageDigest.digest()方法返回的是byte数组，而SHA-1的结果常表示为40为十六进制数，因此需要进行转化，转化原理如下：<br>首先将byte数组每一位转为int类型，然后调用Integer.toHexString转为十六进制字符串，拼接到一个StringBuffer中，全部处理完后，将StringBuffer转为String即可。需要注意的是byte转为int需要进行与操作：&amp; 0xFF，目的是为了保证二进制数据的一致性，举个例子：一个byte是8个二进制位，例如byte类型的-12表示为1111 0100（负数补码表示，12的原码是0000 1100，补码就是取反1111 0011然后加1），如果直接转为int类型，那么就是前24位补1，就会变为1111 1111 1111 1111 1111 1111 1111 0100，会造成二进制补码不一致，所以需要与操作来实现：0x代表十六进制，F代表15,0xFF二进制表示为1111 1111，高24位补0与-12的补码表示进行与操作得到0000 0000 0000 0000 0000 0000 1111 0100，可以将高24位置为0，低8位保持不变，这样就保证了二进制补码的一致性。具体代码如下：<br>
         
       
     
-    </div>
+      <div class="row">
+        <div class="col">
+          <p class="content-link">
+            <a href="/2019/04/09/Java实现SHA-1散列函数/#more">
+              <span>继续阅读</span>
+            </a>
+          </p>
+        </div>
+        <div class="col">
+          <span style="color:#8bb4dc;"><i class="zi zi_eye"></i>：<span id="/2019/04/09/Java实现SHA-1散列函数/" class="leancloud_nums">0</span></span>
+        </div>
+      </div>
+    
+    </p></div>
     
   </article>
   
@@ -370,7 +439,7 @@
           </p>
         </div>
         <div class="col">
-          <span style="color:#79bfba;"><i class="zi zi_eye"></i>：<span id="/2019/04/04/git常用命令/" class="leancloud_nums">0</span></span>
+          <span style="color:#8bb4dc;"><i class="zi zi_eye"></i>：<span id="/2019/04/04/git常用命令/" class="leancloud_nums">0</span></span>
         </div>
       </div>
     
@@ -424,7 +493,7 @@
           </p>
         </div>
         <div class="col">
-          <span style="color:#79bfba;"><i class="zi zi_eye"></i>：<span id="/2019/04/02/springboot整合dubbo/" class="leancloud_nums">0</span></span>
+          <span style="color:#8bb4dc;"><i class="zi zi_eye"></i>：<span id="/2019/04/02/springboot整合dubbo/" class="leancloud_nums">0</span></span>
         </div>
       </div>
     
@@ -478,7 +547,7 @@
           </p>
         </div>
         <div class="col">
-          <span style="color:#79bfba;"><i class="zi zi_eye"></i>：<span id="/2019/04/02/SpringCloud实现简单服务发现调用/" class="leancloud_nums">0</span></span>
+          <span style="color:#8bb4dc;"><i class="zi zi_eye"></i>：<span id="/2019/04/02/SpringCloud实现简单服务发现调用/" class="leancloud_nums">0</span></span>
         </div>
       </div>
     
@@ -540,7 +609,7 @@
           </p>
         </div>
         <div class="col">
-          <span style="color:#79bfba;"><i class="zi zi_eye"></i>：<span id="/2019/04/02/SpringCloudAlibaba实现服务配置管理和动态服务发现（使用Nacos）/" class="leancloud_nums">0</span></span>
+          <span style="color:#8bb4dc;"><i class="zi zi_eye"></i>：<span id="/2019/04/02/SpringCloudAlibaba实现服务配置管理和动态服务发现（使用Nacos）/" class="leancloud_nums">0</span></span>
         </div>
       </div>
     
@@ -601,7 +670,7 @@
           </p>
         </div>
         <div class="col">
-          <span style="color:#79bfba;"><i class="zi zi_eye"></i>：<span id="/2019/03/28/Java实现红黑树/" class="leancloud_nums">0</span></span>
+          <span style="color:#8bb4dc;"><i class="zi zi_eye"></i>：<span id="/2019/03/28/Java实现红黑树/" class="leancloud_nums">0</span></span>
         </div>
       </div>
     
@@ -656,7 +725,7 @@
           </p>
         </div>
         <div class="col">
-          <span style="color:#79bfba;"><i class="zi zi_eye"></i>：<span id="/2019/03/28/常见排序算法Java实现/" class="leancloud_nums">0</span></span>
+          <span style="color:#8bb4dc;"><i class="zi zi_eye"></i>：<span id="/2019/03/28/常见排序算法Java实现/" class="leancloud_nums">0</span></span>
         </div>
       </div>
     
@@ -669,67 +738,10 @@
   
 
   
-    
-  
-  <article class="
-  post
-  
-  ">
-    <header class="post-header">
-      <div class="post-time syuanpi fadeInUpShort back-1">
-        <div class="post-time-wrapper">
-          <span>2019-03-28</span>
-          
-            
-              <span class="post-category"><a href="/categories/框架/">框架</a></span>
-            
-          
-          
-        </div>
-      </div>
-      <h1 class="post-title syuanpi fadeInUpShort back-2">
-        
-          <a href="/2019/03/28/浅谈SpringAOP/">浅谈SpringAOP</a>
-        
-      </h1>
-    </header>
-    <div class="post-content syuanpi fadeInUpShort back-3">
-      
-        
-          <p>AOP是Aspect Oriented Programming的缩写，即面向切面编程。在一个系统中，有的功能是散布在应用的多处，跨了应用的多个点，这些功能被称为横切关注点，比如系统的日志记录。这些横切关注点在概念上独立于应用的业务逻辑，但通常它们会嵌入到应用的业务逻辑中，这样会造成两个问题：</p>
-<ol>
-<li>实现横切关注点功能的代码会重复出现在很多地方，如果需要改它的逻辑必须修改它嵌入的各个模块。即使把横切关注点作为一个独立的模块，但是对它的方法调用还是会重复的出现在每一个要嵌入的模块中；</li>
-<li>嵌入横切关注点的模块除了要关注自己本身的业务逻辑外，还要关注横切关注点要的功能，导致代码混乱。  </li>
-</ol>
-        
-      
-    
-      <div class="row">
-        <div class="col">
-          <p class="content-link">
-            <a href="/2019/03/28/浅谈SpringAOP/#more">
-              <span>继续阅读</span>
-            </a>
-          </p>
-        </div>
-        <div class="col">
-          <span style="color:#79bfba;"><i class="zi zi_eye"></i>：<span id="/2019/03/28/浅谈SpringAOP/" class="leancloud_nums">0</span></span>
-        </div>
-      </div>
-    
-    </div>
-    
-  </article>
-  
-  
-    
-  
-
-  
 </section>
   
   <nav class="pagination">
-      <span class="page-number current">1</span>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 ></a>
   </nav>
 
 

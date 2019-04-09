@@ -64,6 +64,7 @@
   <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="https://ico.z01.com/zico.min.css" rel="stylesheet">
   <title>
+  小白的博客
   
 </title>
 </head>
@@ -245,101 +246,119 @@
 </div>
     <div class="container-inner">
     
+    <div class="row" style="margin-left:0">
+      <div class="col-4 col-sm-2" style="padding:0;">
+         <div class="card text-center">
+            <img class="card-img-top" width="100%" src="https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/xiaobai.jpg">
+            <div class="card-body">
+               <div class="row">
+                 <div class="col" style="padding:0">
+                    <p class="card_text" style="margin:0"><b>9</b></p>
+                    <p class="card_text" style="margin:0">文章</p>
+                 </div>
+                 <div class="col" style="padding:0">
+                    <p class="card_text" style="margin:0"><b>5</b></p>
+                    <p class="card_text" style="margin:0">分类</p>
+                 </div>
+                 <div class="col" style="padding:0">
+                    <p class="card_text" style="margin:0"><b>10</b></p>
+                    <p class="card_text" style="margin:0">标签</p>
+                 </div>
+               </div>
+               <div class="row" style="margin-top:10%;">
+                  <div class="col-4">
+                     <a disabled data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<img src='https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/QQ.JPG' width='100%'>"><i class="zi zi_tmQq"></i></a>
+                  </div>
+                  <div class="col-4">
+                     <a disabled data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<img src='https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/weixin.JPG' width='100%'>"><i class="zi zi_tmWeixin"></i></a>
+                  </div>
+                  <div class="col-4">
+                     <a href="/atom.xml" style="color:black"><i class="zi zi_rss"></i></a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="col-8 col-sm-10" style="padding:0">
+      
       <main class="main" id="main">
         <div class="main-wrapper">
           
+  
+
+<section class="posts">
+  
     
-    <div class="archive syuanpi fadeInUp" id="archive">
-        
-            <h2 class="archive-title"> 正在查看 </h2>
-            <span class="archive-name"> — 框架</span>
-        
-        <div class="archive-list">
-            <ul>
-        
+  
+  <article class="
+  post
+  
+  ">
+    <header class="post-header">
+      <div class="post-time syuanpi fadeInUpShort back-1">
+        <div class="post-time-wrapper">
+          <span>2019-03-28</span>
+          
             
+              <span class="post-category"><a href="/categories/框架/">框架</a></span>
             
-            <li class="archive-post">
-                <span class="archive-post-time">
-                
-                    2019-04-09
-                
-                </span>
-                <span class="archive-post-link">
-                    <a href="/2019/04/09/Spring自动化装配机制/">Spring自动化装配机制</a>
-                </span>
-            </li>
-
-        
-            
-            
-            <li class="archive-post">
-                <span class="archive-post-time">
-                
-                    2019-04-02
-                
-                </span>
-                <span class="archive-post-link">
-                    <a href="/2019/04/02/springboot整合dubbo/">springboot整合dubbo</a>
-                </span>
-            </li>
-
-        
-            
-            
-            <li class="archive-post">
-                <span class="archive-post-time">
-                
-                    2019-04-02
-                
-                </span>
-                <span class="archive-post-link">
-                    <a href="/2019/04/02/SpringCloud实现简单服务发现调用/">SpringCloud实现简单服务发现调用</a>
-                </span>
-            </li>
-
-        
-            
-            
-            <li class="archive-post">
-                <span class="archive-post-time">
-                
-                    2019-04-02
-                
-                </span>
-                <span class="archive-post-link">
-                    <a href="/2019/04/02/SpringCloudAlibaba实现服务配置管理和动态服务发现（使用Nacos）/">SpringCloudAlibaba实现服务配置管理和动态服务发现（使用Nacos）</a>
-                </span>
-            </li>
-
-        
-            
-            
-            <li class="archive-post">
-                <span class="archive-post-time">
-                
-                    2019-03-28
-                
-                </span>
-                <span class="archive-post-link">
-                    <a href="/2019/03/28/浅谈SpringAOP/">浅谈SpringAOP</a>
-                </span>
-            </li>
-
-        
-            </ul>
+          
+          
         </div>
+      </div>
+      <h1 class="post-title syuanpi fadeInUpShort back-2">
+        
+          <a href="/2019/03/28/浅谈SpringAOP/">浅谈SpringAOP</a>
+        
+      </h1>
+    </header>
+    <div class="post-content syuanpi fadeInUpShort back-3">
+      
+        
+          <p>AOP是Aspect Oriented Programming的缩写，即面向切面编程。在一个系统中，有的功能是散布在应用的多处，跨了应用的多个点，这些功能被称为横切关注点，比如系统的日志记录。这些横切关注点在概念上独立于应用的业务逻辑，但通常它们会嵌入到应用的业务逻辑中，这样会造成两个问题：</p>
+<ol>
+<li>实现横切关注点功能的代码会重复出现在很多地方，如果需要改它的逻辑必须修改它嵌入的各个模块。即使把横切关注点作为一个独立的模块，但是对它的方法调用还是会重复的出现在每一个要嵌入的模块中；</li>
+<li>嵌入横切关注点的模块除了要关注自己本身的业务逻辑外，还要关注横切关注点要的功能，导致代码混乱。  </li>
+</ol>
+        
+      
+    
+      <div class="row">
+        <div class="col">
+          <p class="content-link">
+            <a href="/2019/03/28/浅谈SpringAOP/#more">
+              <span>继续阅读</span>
+            </a>
+          </p>
+        </div>
+        <div class="col">
+          <span style="color:#8bb4dc;"><i class="zi zi_eye"></i>：<span id="/2019/03/28/浅谈SpringAOP/" class="leancloud_nums">0</span></span>
+        </div>
+      </div>
+    
     </div>
     
-  <nav class="pagination">
-      <span class="page-number current">1</span>
-  </nav>
+  </article>
+  
+  
+    
+  
 
+  
+</section>
+  
+  <nav class="pagination">
+      <a class="extend prev" rel="prev" href="/">< 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 
         </div>
       </main>
       
+      </div>
+      
+    </div>
+    
       <footer class="footer syuanpi fadeIn" id="footer">
   <hr>
   <div class="footer-wrapper">
@@ -451,6 +470,29 @@
       })
   </script>
   
+  
+    <script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
+<script>
+    var APP_ID = '0MxsPI7i0WQS8ay0kgAoKMyg-gzGzoHsz';
+    var APP_KEY = 'Njk0sn0NSf7KiknnCRzlbBVS';
+    AV.init({
+        appId: APP_ID,
+        appKey: APP_KEY
+    });
+    var articles = $(".leancloud_nums")
+    for(var i = 0;i < articles.length;i++){
+      var url = articles[i].id;
+      var query = new AV.Query("xiaobai");
+      query.equalTo("words", url);
+      query.find().then(function (result) {
+          var id = result[0].get('words');
+          var number = result.length;
+          $(document.getElementById(id)).text(number?  number : '0');
+      }, function (error) {
+            // error is an instance of AVError.
+      });
+    }
+</script>
   
   <script>
   (function(){
