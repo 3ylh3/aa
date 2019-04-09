@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Java实现SHA-1散列函数</title>
+      <link href="/2019/04/09/Java%E5%AE%9E%E7%8E%B0SHA-1%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0/"/>
+      <url>/2019/04/09/Java%E5%AE%9E%E7%8E%B0SHA-1%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0/</url>
+      
+        <content type="html"><![CDATA[<p>SHA-1是一种安全散列算法，也是一种哈希函数，它能够将任意长度的信息散列成160位（bit）的消息摘要，散列值通常表示为40个十六进制数，结果是不可逆的。SHA-1主要数字签名，来验证数据的完整性。Java提供了MessageDigest类，可以用来实现SHA-1算法。MessageDigest.digest()方法返回的是byte数组，而SHA-1的结果常表示为40为十六进制数，因此需要进行转化，转化原理如下：<br>首先将byte数组每一位转为int类型，然后调用Integer.toHexString转为十六进制字符串，拼接到一个StringBuffer中，全部处理完后，将StringBuffer转为String即可。需要注意的是byte转为int需要进行与操作：&amp; 0xFF，目的是为了保证二进制数据的一致性，举个例子：一个byte是8个二进制位，例如byte类型的-12表示为1111 0100（负数补码表示，12的原码是0000 1100，补码就是取反1111 0011然后加1），如果直接转为int类型，那么就是前24位补1，就会变为1111 1111 1111 1111 1111 1111 1111 0100，会造成二进制补码不一致，所以需要与操作来实现：0x代表十六进制，F代表15,0xFF二进制表示为1111 1111，高24位补0与-12的补码表示进行与操作得到0000 0000 0000 0000 0000 0000 1111 0100，可以将高24位置为0，低8位保持不变，这样就保证了二进制补码的一致性。具体代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.security.MessageDigest;</span><br><span class="line"><span class="keyword">import</span> java.security.NoSuchAlgorithmException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SHA1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            String str = <span class="string">"Hello World!"</span>;</span><br><span class="line">            <span class="comment">//生成MessageDigest对象</span></span><br><span class="line">            MessageDigest md = MessageDigest.getInstance(<span class="string">"SHA-1"</span>);</span><br><span class="line">            <span class="comment">//更新摘要</span></span><br><span class="line">            md.update(str.getBytes());</span><br><span class="line">            <span class="comment">//生成摘要</span></span><br><span class="line">            <span class="keyword">byte</span>[] data = md.digest();</span><br><span class="line">            <span class="comment">//将结果转为十六进制字符串</span></span><br><span class="line">            StringBuffer hexstr = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">            String s = <span class="string">""</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; data.length; i++) &#123;</span><br><span class="line">                s = Integer.toHexString(data[i] &amp; <span class="number">0xFF</span>);</span><br><span class="line">                <span class="comment">//一个十六进制数4位，所以一个byte用两个十六进制数表示，不足的左补零</span></span><br><span class="line">                <span class="keyword">if</span> (s.length() &lt; <span class="number">2</span>) &#123;</span><br><span class="line">                    hexstr.append(<span class="number">0</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                hexstr.append(s);</span><br><span class="line">            &#125;</span><br><span class="line">            String result = hexstr.toString();</span><br><span class="line">            System.out.println(<span class="string">"result:"</span> + result);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (NoSuchAlgorithmException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>MessageDigest类也提供MD5的支持，只需要将getInstance的参数变为MD5即可。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SHA-1 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>git常用命令</title>
       <link href="/2019/04/04/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
       <url>/2019/04/04/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
