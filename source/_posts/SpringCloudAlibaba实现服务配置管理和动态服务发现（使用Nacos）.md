@@ -25,14 +25,14 @@ tags:
     sh startup.sh -m standalone
 ```
 然后访问http:/x.x.x.x:8848/nacos/index.html(x.x.x.x为安装服务器)，输入用户名密码（默认都是nacos），登录后看到：
-![nacos](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190304174812185.png)
+![nacos](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190304174812185.png)
 至此Nacos安装成功。
 
 ### 2. 实现动态配置管理
 首先在Nacos新增配置，点击+号：
-![nacos](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190304175048811.png)
+![nacos](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190304175048811.png)
 填写Data Id、Group和内容，配置格式选择YAML。
-![nacos](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190304175143790.png)
+![nacos](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190304175143790.png)
 其中Data Id的完整格式为：
 ```
     ${prefix}-${spring.profile.active}.${file-extension}
@@ -66,7 +66,7 @@ file-exetension 为配置内容的数据格式，可以通过配置项 spring.cl
     </project>
 ```
 新建config-client模块，选择Spring Initializr创建Spring Boot工程，依赖选择：
-![新建config-client模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190304180745749.png)
+![新建config-client模块](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190304180745749.png)
 创建完成后修改pom文件parent节点并添加依赖：
 ```xml
     <dependency>
@@ -192,7 +192,7 @@ file-exetension 为配置内容的数据格式，可以通过配置项 spring.cl
     }
 ```
 使用@Value注解来获取配置文件中的message，启动工程，访问http://localhost:8880/config可以看到成功获取到message:
-![运行结果](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190305093501265.png)
+![运行结果](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190305093501265.png)
 ## 二、服务发现(使用FeignClient调用)
 ### 创建服务提供者
 新建service-discovery模块（空的maven项目），创建完成后删除src目录修改pom文件内容如下：
@@ -219,7 +219,7 @@ file-exetension 为配置内容的数据格式，可以通过配置项 spring.cl
     </project>
 ```
 在service-discovery模块再创建service-provider子模块，选择Spring Initializr创建Spring Boot工程，依赖选择：
-![创建service-provider子模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/2019030509431343.png)
+![创建service-provider子模块](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/2019030509431343.png)
 创建完成后修改pom文件parent节点并添加Spring Cloud依赖：
 ```xml
     <properties>
@@ -384,11 +384,11 @@ server-addr是nacos注册中心的地址。
     }
 ```
 启动项目，查看nacos服务管理中已经注册成功：
-![运行结果](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190305102753436.png)
+![运行结果](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190305102753436.png)
 ### 创建服务消费者
 在service-discovery模块再创建service-consumer子模块，选择Spring Initializr创建Spring Boot工程，依赖选择：
-![创建service-consumer子模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190305103016412.png)
-![创建service-consumer子模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190305103031980.png)
+![创建service-consumer子模块](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190305103016412.png)
+![创建service-consumer子模块](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190305103031980.png)
 创建完成后修改pom文件parent节点并添加nacos-discovery依赖：
 ```xml
     <dependency>
@@ -540,6 +540,6 @@ server-addr是nacos注册中心的地址。
     }
 ```
 启动项目，查看nacos服务管理，看到消费者已经注册成功：
-![运行结果](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190305104116656.png)
+![运行结果](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190305104116656.png)
 访问http://localhost/test?name=xiaobai看到成功调用到service-provider的服务：
-![运行结果](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190305104214440.png)
+![运行结果](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloudAlibaba/20190305104214440.png)

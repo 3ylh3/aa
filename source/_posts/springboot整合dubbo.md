@@ -11,7 +11,7 @@ tags:
 具体步骤：
 ## 1.使用IDEA创建一个空的MAVEN项目
 <!-- more -->
-![创建空的MAVEN项目](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringBoot%E6%95%B4%E5%90%88Dubbo/20190226154346930.png)
+![创建空的MAVEN项目](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringBoot%E6%95%B4%E5%90%88Dubbo/20190226154346930.png)
 项目创建完成后，删除src目录，在pom.xml中添加
 ```xml
     <packaging>pom</packaging>
@@ -44,12 +44,12 @@ tags:
 ```
 ## 2.创建dubbo-provider子模块
 新建模块
-![创建dubbo-provider子模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringBoot%E6%95%B4%E5%90%88Dubbo/20190226155523114.png)
+![创建dubbo-provider子模块](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringBoot%E6%95%B4%E5%90%88Dubbo/20190226155523114.png)
 选择Spring Intializr
-![创建dubbo-provider子模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringBoot%E6%95%B4%E5%90%88Dubbo/20190226155548839.png)
-![创建dubbo-provider子模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringBoot%E6%95%B4%E5%90%88Dubbo/20190226165215783.png)
+![创建dubbo-provider子模块](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringBoot%E6%95%B4%E5%90%88Dubbo/20190226155548839.png)
+![创建dubbo-provider子模块](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringBoot%E6%95%B4%E5%90%88Dubbo/20190226165215783.png)
 选择web(这里需要注意，如果不创建web工程的话整个dubbo-provider工程运行完就会退出)
-![创建dubbo-provider子模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringBoot%E6%95%B4%E5%90%88Dubbo/20190226155738941.png)
+![创建dubbo-provider子模块](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringBoot%E6%95%B4%E5%90%88Dubbo/20190226155738941.png)
 在pom文件中添加dubbo-springboot依赖和zookeeper依赖：
 ```xml
 <!--dubbo-springBoot依赖-->
@@ -341,9 +341,9 @@ package com.xiaobai.dubbo.service;
     </html>
 ```
 然后启动dubbo-provider模块的启动类，再启动dubbo-consumer模块的启动类，查看dobbo-admin控制台：
-![dobbo-admin控制台](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringBoot%E6%95%B4%E5%90%88Dubbo/201902261716004.png)
+![dobbo-admin控制台](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringBoot%E6%95%B4%E5%90%88Dubbo/201902261716004.png)
 提供者和消费者均注册成功，此时访问http://localhost/consumer会看到
-![运行结果](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringBoot%E6%95%B4%E5%90%88Dubbo/20190226171640776.png)
+![运行结果](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringBoot%E6%95%B4%E5%90%88Dubbo/20190226171640776.png)
 至此springboot和dubbo整合完成。
 完整的代码以上传到github:
 https://github.com/3ylh3/springboot-dubbo.git

@@ -51,4 +51,4 @@ tags: git
  - git push origin :refs/tags/<tagname>:删除远程标签（需要首先删除本地）
 
 各操作图解如下：
-![git](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/git/git.png)
+![git](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/git/git.png)

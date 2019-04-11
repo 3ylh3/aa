@@ -74,7 +74,7 @@ tags:
  8. 将node设为tmpNode的左孩子，将node的父节点设为tmpNode。
 
 图解如下：
-![左旋](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190313165501748.png)
+![左旋](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190313165501748.png)
 Java代码实现：
 ```java
     public void leftRotate(TreeNode node){
@@ -127,7 +127,7 @@ Java代码实现：
  8. 将node设为tmpNode的右孩子，将node的父节点设为tmpNode。
 
 图解如下：
-![右旋](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190313171837844.png)
+![右旋](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190313171837844.png)
 Java代码实现：
 ```java
     public void rightRotate(TreeNode node){
@@ -199,23 +199,23 @@ Java代码实现：
  7. 如果node节点的父节点是红色并且是祖父节点的右孩子，叔叔节点是黑色，并且node节点是父节点的右孩子，则将父节点设为黑色，将祖父节点设为红色并进行左旋。
 
  子情况1（父节点是红色，叔叔节点也是红色）图解， 5是插入节点（当前节点），：
- ![插入调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314101704714.png)  
+ ![插入调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314101704714.png)  
 调整后（按步骤2和5调整）如下，20为当前节点：  
- ![插入调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314101828404.png)  
+ ![插入调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314101828404.png)  
  对当前节点递归调整（按照步骤1调整）后满足红黑树条件：  
- ![插入调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314103800288.png)  
+ ![插入调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314103800288.png)  
  子情况2（父节点是红色并且是祖父节点的左孩子，叔叔节点是黑色（空的叶子节点），并且插入节点是父节点的右孩子）图解，15为插入节点：
- ![插入调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314103126334.png)  
+ ![插入调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314103126334.png)  
  调整（按步骤3调整）后如下，此时10是当前节点：  
- ![插入调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314103357742.png)  
+ ![插入调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314103357742.png)  
  对当前节点进行递归调整后满足红黑树条件（这种其实是子情况3，按照步骤4调整）：  
- ![插入调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314103651449.png)  
+ ![插入调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314103651449.png)  
  子情况4图解（子情况3上面已经描述，不再赘述），插入节点是25：  
- ![插入调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314103917223.png)  
+ ![插入调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314103917223.png)  
  调整后（按照步骤6调整）如下，此时当前节点是30：  
- ![插入调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314104100479.png)  
+ ![插入调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314104100479.png)  
  递归调整（这种其实是子情况6，按照步骤7调整）后如下，满足红黑树条件：  
- ![插入调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314104225580.png)  
+ ![插入调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314104225580.png)  
 完整的Java代码如下：
 ```java
     /**
@@ -383,33 +383,33 @@ Java代码实现：
  10.  如果node是右孩子，tmpNode是黑色的，而且tmpNode的左孩子是红色，则将node父节点的颜色赋给tmpNode，将node父节点设为黑色，将tmpNode左孩子设为黑色，将node的父亲右旋。
 
 子情况1图解，已经删除的节点是20的左孩子（被空的叶子节点取代），需要调整的（当前节点）是20的左孩子（空的叶子节点）：  
-![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314144744647.png)  
+![删除调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314144744647.png)  
 调整（按照步骤3调整）后如下，此时当前节点的兄弟节点是25：  
-![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314145025255.png)  
+![删除调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314145025255.png)  
 继续进行步骤3之后的步骤，此时其实是子情况2，继续调整（按照步骤4调整）后如下：  
-![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314150245957.png)  
+![删除调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314150245957.png)  
 对父节点20进行递归调整后如下，满足红黑树规则：  
-![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314150521332.png)  
+![删除调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314150521332.png)  
 子情况3（子情况2前面已经描述过，这里不再赘述）图解如下，已经删除的节点是20的左孩子，需要调整的节点是20的左孩子（空叶子节点）:  
-![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314152422158.png)  
+![删除调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314152422158.png)  
 调整（按照步骤5）后如下，此时当前节点的兄弟节点是25：  
-![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314153928195.jpg)  
+![删除调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314153928195.jpg)  
 继续进行步骤5之后的步骤，这时实际上是子情况4，调整（按照步骤6）后如下，满足红黑树规则：  
-![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314154737754.png)  
+![删除调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314154737754.png)  
 子情况5（子情况4前面已经描述过，这里不再赘述）图解，已经删除的节点是20的右孩子，需要调整的节点是20的右孩子（空叶子节点）：  
-![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314155234787.png)  
+![删除调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314155234787.png)  
 调整（按照步骤7）后如下，此时当前节点的兄弟节点是15：  
-![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314155348344.png)  
+![删除调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314155348344.png)  
 继续步骤7之后的步骤，此时其实是子情况6,继续调整（按照步骤8）后如下：
-![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314155923441.png)  
+![删除调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314155923441.png)  
 递归调整父节点20后如下，满足红黑树规则：  
-![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314155955492.png)  
+![删除调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314155955492.png)  
 子情况7（子情况6前面已经描述过，这里不再赘述）图解，已经删除的节点是20的右孩子，需要调整的节点是20的右孩子（空的叶子节点）：  
-![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314160551543.png)  
+![删除调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314160551543.png)  
 调整（按照步骤9）后如下，此时当前节点的兄弟为15：  
-![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/2019031416070444.png)  
+![删除调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/2019031416070444.png)  
 继续步骤9之后的步骤，此时其实是子情况8，继续调整（按照步骤10）后如下，满足红黑树规则：  
-![删除调整](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314160832196.png)  
+![删除调整](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/Java%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91/20190314160832196.png)  
 调整完后判断调整的节点是不是空的叶子节点，如果是则将它删除。
 完整的删除代码如下：
 ```java

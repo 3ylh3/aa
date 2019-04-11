@@ -38,11 +38,11 @@ tags:
 ```
 ## 2.创建eureka-server注册中心模块
 新建模块：
-![创建eureka-server注册中心模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228154453293.png)
+![创建eureka-server注册中心模块](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228154453293.png)
 选择Spring Initializr创建spring boot工程：
-![创建eureka-server注册中心模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228151856361.png)
+![创建eureka-server注册中心模块](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228151856361.png)
 选择Eureka Server:
-![创建eureka-server注册中心模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228152003238.png)
+![创建eureka-server注册中心模块](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228152003238.png)
 创建完成后修改pom文件parent节点为父项目的groupId、artifactId以及version，完整的pom文件如下：
 ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -147,16 +147,16 @@ tags:
     }
 ```
 运行启动类，访问http://localhost:8761/会看到
-![运行结果](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228154051813.png)
+![运行结果](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228154051813.png)
 No instances available代表没有服务注册。
 ## 3.创建provider服务提供者模块
 新建模块：
-![创建provider服务提供者模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228154453293.png)
+![创建provider服务提供者模块](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228154453293.png)
 选择Spring Initializr创建spring boot工程：
-![创建provider服务提供者模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228151856361.png)
+![创建provider服务提供者模块](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228151856361.png)
 选择web和Eureka Discovery创建eureka-client web工程：
-![创建provider服务提供者模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228154617262.png)
-![创建provider服务提供者模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/2019022815463168.png)
+![创建provider服务提供者模块](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228154617262.png)
+![创建provider服务提供者模块](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/2019022815463168.png)
 修改pom文件parent节点为父项目的groupId、artifactId以及version，完整的pom文件如下：
 ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -301,16 +301,16 @@ No instances available代表没有服务注册。
     }
 ```
 启动provider项目，刷新http://localhost:8761/页面查看provider服务注册成功：
-![运行结果](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228165629403.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTE0NzMwNjc=,size_16,color_FFFFFF,t_70)
+![运行结果](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228165629403.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTE0NzMwNjc=,size_16,color_FFFFFF,t_70)
 ## 3.创建consumer模块
 新建模块：
-![创建consumer模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228154453293.png)
+![创建consumer模块](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228154453293.png)
 选择Spring Initializr创建spring boot工程：
-![创建consumer模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228151856361.png)
+![创建consumer模块](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228151856361.png)
 选择web、Eureka Discovery和Feign:
-![创建consumer模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228165916502.png)
-![创建consumer模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228170116134.png)
-![创建consumer模块](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228165939578.png)
+![创建consumer模块](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228165916502.png)
+![创建consumer模块](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228170116134.png)
+![创建consumer模块](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228165939578.png)
 修改pom文件parent节点为父项目的groupId、artifactId以及version，完整的pom文件如下：
 ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -452,8 +452,8 @@ No instances available代表没有服务注册。
     }
 ```
 启动consumer服务，刷新http://localhost:8761/，看到consumer服务也注册成功：
-![运行结果](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228172110143.png)
+![运行结果](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228172110143.png)
 此时访问http://localhost/sayHello就会看到调用成功：
-![运行结果](https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228172218909.png)
+![运行结果](https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/SpringCloud%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0/20190228172218909.png)
 
 完整的项目代码已上传github:https://github.com/3ylh3/spring-cloud

@@ -25,7 +25,7 @@
     <div class="row" style="margin-left:0">
       <div class="col-4 col-sm-2" style="padding:0;">
          <div class="card text-center">
-            <img class="card-img-top" width="100%" src="https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/xiaobai.jpg"/>
+            <img class="card-img-top" width="100%" src="https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/xiaobai.jpg"/>
             <div class="card-body">
                <div class="row">
                  <div class="col" style="padding:0">
@@ -43,10 +43,10 @@
                </div>
                <div class="row" style="margin-top:10%;">
                   <div class="col-4">
-                     <a disabled data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<img src='https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/QQ.JPG' width='100%'>"><i class="zi zi_tmQq"></i></a>
+                     <a disabled data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<img src='https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/QQ.JPG' width='100%'>"><i class="zi zi_tmQq"></i></a>
                   </div>
                   <div class="col-4">
-                     <a disabled data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<img src='https://xiaobai-blog.oss-cn-beijing.aliyuncs.com/weixin.JPG' width='100%'>"><i class="zi zi_tmWeixin"></i></a>
+                     <a disabled data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<img src='https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/weixin.JPG' width='100%'>"><i class="zi zi_tmWeixin"></i></a>
                   </div>
                   <div class="col-4">
                      <a href="/atom.xml" style="color:black"><i class="zi zi_rss"></i></a>
