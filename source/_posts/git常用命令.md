@@ -7,7 +7,7 @@ tags: git
 在列举git常用命令之前，首先介绍一下git工作区和版本库的概念。  
 工作区(working directory):通俗讲就是电脑中的目录。
 版本库(repository):工作区中有一个隐藏的.git目录，就是git的版本库，其中包含一个被称为stage(又叫index)的暂存区，还有git自动创建的一个master分支，以及一个指向master的指针HEAD。
-[!-- more --]
+<!-- more -->
 接下来介绍git的常用命令：
  - git init：将目录变为可管理的仓库
  - git add [file]:把对file的修改添加进暂存区
