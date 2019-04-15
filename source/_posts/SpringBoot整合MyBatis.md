@@ -188,7 +188,7 @@ public class QueryUserController {
     select id,name from testTable where id = #{id}
 </select>
 ```
-接收一个String类型的参数（省略了parameterType="String"）,返回一个User对象。注意参数符号#{id},它和${id}的区别在于#{}会会导致MyBatis创建 PreparedStatement参数占位符并安全地设置参数，防止SQL注入，举个例子，如果select元素这样写：
+接收一个String类型的参数（省略了parameterType="java.lang.String"）,返回一个User对象。注意参数符号#{id},它和${id}的区别在于#{}会会导致MyBatis创建 PreparedStatement参数占位符并安全地设置参数，防止SQL注入，举个例子，如果select元素这样写：
 ```xml
 <select id="queryUserById" resultType="com.xiaobai.springbootmybatis.entity.User">
     select id,name from testTable where id = '${id}'
