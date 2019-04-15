@@ -20,3 +20,4 @@
 {% include "../../_script/_analytics/google.swig" %}
 {% include "../../_script/_analytics/baidu.swig" %}
 {% include "../../_script/_analytics/busuanzi.swig" %}
+<link rel="Shortcut Icon" href="https://xiaobai-picture.oss-cn-beijing.aliyuncs.com/xiaobai.jpg" />
