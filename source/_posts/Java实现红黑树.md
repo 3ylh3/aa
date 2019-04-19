@@ -1,9 +1,7 @@
 ---
 title: Java实现红黑树
 date: 2019-03-28 17:47:33
-categories:
- - 数据结构和算法
- - Java
+categories: 数据结构和算法
 tags:
  - 红黑树
 ---

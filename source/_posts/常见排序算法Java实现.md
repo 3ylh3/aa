@@ -1,9 +1,7 @@
 ---
 title: 常见排序算法Java实现
 date: 2019-03-28 15:53:47
-categories:
- - 数据结构和算法
- - Java
+categories: 数据结构和算法
 tags:
   - 排序算法
 mathjax: true
