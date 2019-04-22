@@ -33,8 +33,6 @@ spring:
     url: jdbc:mysql://xx.xx.xx.xx:3306/xxx
     driver-class-name: com.mysql.cj.jdbc.Driver
 mybatis:
-  #dao接口所在的包
-  type-aliases-package: com.xiaobai.springbootmybatis.dao
   #mapper映射文件的路径
   mapper-locations: classpath:mapper/*.xml
 ```
