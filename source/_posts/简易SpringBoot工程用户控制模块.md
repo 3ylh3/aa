@@ -7,7 +7,7 @@ tags: Spring Boot
 自己做了一个简易的Spring Boot工程的用户控制模块，基于Mybatis，提供Spring Boot工程的用户注册、登录、信息更新以及销户功能的支持。  
 <!-- more -->
 ### 使用方法：  
- 1. 引入编译好的jar包。
+ 1. 引入编译好的jar包以及MyBatis的依赖。
  2. 在工程启动类上添加注解：
     ```java
     @MapperScan(UserControl.BASE_PACKAGE)
