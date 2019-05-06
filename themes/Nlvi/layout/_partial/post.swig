@@ -57,7 +57,7 @@
           </p>
         </div>
         <div class="col">
-          <span style="color:#8bb4dc;"><i class="zi zi_eye"></i>：<span id="{{ url_for(post.path) }}" class="leancloud_nums">0</span></span>
+          <span style="color:#94ba90;"><i class="zi zi_eye"></i>：<span id="{{ url_for(post.path) }}" class="leancloud_nums">0</span></span>
         </div>
       </div>
     {% endif %}
