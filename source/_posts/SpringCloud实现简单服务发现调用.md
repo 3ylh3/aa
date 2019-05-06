@@ -111,7 +111,7 @@ tags:
 ```
 
 修改application.yml配置文件：
-```yaml
+```yml
     spring:
       application:
         name: eureka-server
@@ -228,7 +228,7 @@ No instances available代表没有服务注册。
     </project>
 ```
 修改application.yml配置文件：
-```yaml
+```yml
     spring:
       application:
         name: provider
@@ -386,7 +386,7 @@ No instances available代表没有服务注册。
     </project>
 ```
 修改application.yml配置文件，配置文件内容和provider类似，只需修改一下端口防止冲突：
-```yaml
+```yml
     spring:
       application:
         name: consumer

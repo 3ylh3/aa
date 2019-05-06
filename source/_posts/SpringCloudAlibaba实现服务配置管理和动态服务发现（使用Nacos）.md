@@ -141,7 +141,7 @@ file-exetension 为配置内容的数据格式，可以通过配置项 spring.cl
     </project>
 ```
 修改配置文件名称为bootstrap.yml(或bootstrap.properties，需要注意要获取Nacos配置的属性必须使用bootstrap)，修改内容为：
-```yaml
+```yml
     server:
       port: 8880
     spring:
@@ -311,7 +311,7 @@ file-exetension 为配置内容的数据格式，可以通过配置项 spring.cl
     </project>
 ```
 修改application.yml(application.properties)配置文件:
-```yaml
+```yml
     server:
       port: 8888
     spring:
@@ -474,7 +474,7 @@ server-addr是nacos注册中心的地址。
     </project>
 ```
 修改application.yml(application.properties)配置文件:
-```yaml
+```yml
     server:
       port: 80
     spring:

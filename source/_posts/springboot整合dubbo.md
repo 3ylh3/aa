@@ -137,7 +137,7 @@ dubbo-provider模块完整pom文件如下：
     </project>
 ```
 修改dubbo-provider模块的application.properties配置文件内容为(我习惯用yml文件,因此这里用的是application.yml):
-```yaml
+```yml
     spring:
       dubbo:
         application:
@@ -149,7 +149,7 @@ dubbo-provider模块完整pom文件如下：
           port: 20880
 ```
 其中
-```yaml
+```yml
     registry:
       address: zookeeper://x.x.x.x:2181
 ```
@@ -281,7 +281,7 @@ dubbo-consumer模块完整的pom文件如下：
     </project>
 ```
 dubbo-consumer模块的application.yml配置文件内容如下：
-```yaml
+```yml
     server:
       port: 80
 

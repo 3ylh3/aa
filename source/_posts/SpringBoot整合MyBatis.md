@@ -4,7 +4,7 @@ date: 2019-04-15 15:18:17
 categories: 框架
 tags:
  - Spring Boot
- - MyBaits
+ - MyBatis
 ---
 MyBatis是一款优秀的持久层框架，它消除了JDBC的重复冗余的代码，可以通过xml文件或者注解配置（注解配置能力有限，如果是复杂的SQL语句最好使用xml配置）来把普通类型或者是POJO映射成数据库中的记录。在Spring Boot项目中使用MyBatis非常简单，只需要在pom文件中添加MyBatis以及相应JDBC驱动的依赖（Maven项目）即可(这只是最基本的使用，还可以使用DBCP2等数据库连接池)：
 <!-- more -->
@@ -22,7 +22,7 @@ MyBatis是一款优秀的持久层框架，它消除了JDBC的重复冗余的代
 </dependency>
 ```
 然后在application.yml配置文件中添加相应配置：
-```yaml
+```yml
 spring:
   datasource:
     #数据库用户名
