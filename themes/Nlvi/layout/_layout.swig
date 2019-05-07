@@ -106,6 +106,16 @@
       document.write('<script src="' + src + '" id="sozz"><\/script>');
     })();
   </script>
-  <script type="text/javascript" pointColor="148,186,144" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+ <!-- <script type="text/javascript" pointColor="148,186,144" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>-->
+  <script src="https://cdn.jsdelivr.net/npm/bubbly-bg@1.0.0/dist/bubbly-bg.js"></script>
+	<script>
+		bubbly({
+			colorStart: "#FFFFFF",
+			colorStop: "#FFFFFF",
+			blur: 1,
+			compose: "source-over",
+			bubbleFunc: () => `hsla(${Math.random() * 240}, 100%, 50%, .3)`
+		});
+	</script>
 </body>
 </html>
